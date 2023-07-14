@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: champions-league-nginx
+    build: docker/nginx
+    working_dir: /var/www/app
+    ports:
+      - "9969:80"
+    volumes:
+      - ./:/var/www/app
+      - ./docker/nginx/default-compose.conf:/etc/nginx/conf.d/default-compose.conf
+    networks:
+      - champions-league-network
+
+  php:
+    container_name: champions-league-fpm
+    build: docker/php
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
+    networks:
+      - champions-league-network
+
+  mysql:
+    container_name: champions-league-mysql
+    build: docker/mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - champions-league-network
+
+  phpmyadmin:
+    container_name: champions-league-phpmyadmin
+    build: docker/phpmyadmin
+    restart: on-failure
+    ports:
+      - "7999:80"
+    environment:
+      - PMA_HOST=mysql
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./docker/phpmyadmin/upload.ini:/usr/local/etc/php/php.ini
+    networks:
+      - champions-league-network
+
+networks:
+  champions-league-network:
