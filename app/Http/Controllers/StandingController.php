@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Standing;
+use App\Services\Standing\StandingService;
 
 class StandingController extends Controller
 {
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(StandingService $standingService): \Illuminate\Http\JsonResponse
     {
-        $teams = Standing::orderBy('points', 'desc')->get();
-
         return response()->json([
             'status' => 'success',
-            'data' => $teams,
+            'data' => $standingService->getStandingsOrderByPointsDesc(),
         ]);
     }
 }

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Team;
+use App\Services\Team\TeamService;
 
 class TeamController extends Controller
 {
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(TeamService $service): \Illuminate\Http\JsonResponse
     {
-        $teams = Team::all();
-
         return response()->json([
             'status' => 'success',
-            'data' => $teams,
+            'data' => $service->getAllTeams(),
         ]);
     }
 }

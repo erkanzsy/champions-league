@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Championship;
+use App\Services\Championship\ChampionshipService;
 
 class ChampionshipController extends Controller
 {
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(ChampionshipService $championshipService): \Illuminate\Http\JsonResponse
     {
-        $teams = Championship::orderBy('prediction', 'desc')->take(5)->get();
-
         return response()->json([
             'status' => 'success',
-            'data' => $teams,
+            'data' => $championshipService->getChampionships(),
         ]);
     }
 }

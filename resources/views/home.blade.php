@@ -171,12 +171,14 @@
                                     type="button"
                                     className="btn btn-primary"
                                     onClick={this.playWeek}
+                                    disabled={this.state.activeWeek === 0}
                                 >Play Week
                                 </button>
 
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
+                                    disabled={this.state.activeWeek === 0}
                                     onClick={this.playAll}
                                 >Play All
                                 </button>
