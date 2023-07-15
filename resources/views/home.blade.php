@@ -133,7 +133,7 @@
                     console.error(error);
                 });
 
-            await new Promise(r => setTimeout(r, 200));
+            await new Promise(r => setTimeout(r, 2000));
 
             this.rebuildAllData()
         }
@@ -144,7 +144,7 @@
                     console.error(error);
                 });
 
-            await new Promise(r => setTimeout(r, 200));
+            await new Promise(r => setTimeout(r, 2000));
 
             this.rebuildAllData()
         }
@@ -155,7 +155,7 @@
                     console.error(error);
                 });
 
-            await new Promise(r => setTimeout(r, 200));
+            await new Promise(r => setTimeout(r, 2000));
 
             this.rebuildAllData()
         }
