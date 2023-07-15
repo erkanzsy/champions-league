@@ -23,3 +23,5 @@ Route::get('/fixture/play/{week}', [\App\Http\Controllers\FixtureController::cla
 Route::get('/standing', [\App\Http\Controllers\StandingController::class, 'index']);
 
 Route::get('/league', [\App\Http\Controllers\LeagueController::class, 'index']);
+
+Route::get('/championship', [\App\Http\Controllers\ChampionshipController::class, 'index']);

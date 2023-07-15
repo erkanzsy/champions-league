@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Standing;
+use App\Models\Championship;
 
-class StandingController extends Controller
+class ChampionshipController extends Controller
 {
     public function index(): \Illuminate\Http\JsonResponse
     {
-        $teams = Standing::orderBy('points', 'desc')->get();
+        $teams = Championship::orderBy('prediction', 'desc')->take(5)->get();
 
         return response()->json([
             'status' => 'success',
