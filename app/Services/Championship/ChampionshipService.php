@@ -40,7 +40,6 @@ class ChampionshipService
             return;
         }
 
-
         $firstTeamPoint   = $firstTeam->points;
         $possibleMaxPoint = StandingService::POINT_WINS * $leftWeek;
 
