@@ -56,8 +56,6 @@
 
                     this.setState({teams: teams});
 
-                    console.log(teams)
-
                     return teams;
                 })
                 .catch(error => {
@@ -85,7 +83,7 @@
                     });
 
                     this.setState({fixture: groupedData, activeWeek: activeWeek});
-                    console.log(groupedData)
+
                     return groupedData;
                 })
                 .catch(error => {
@@ -98,7 +96,6 @@
                 .then(response => response.json())
                 .then(json => {
                     this.setState({championship: json.data});
-                    console.log(json)
                     return json.data;
                 })
                 .catch(error => {
@@ -111,7 +108,6 @@
                 .then(response => response.json())
                 .then(json => {
                     this.setState({standings: json.data});
-                    console.log(json)
                     return json.data;
                 })
                 .catch(error => {
@@ -126,36 +122,40 @@
         }
 
         rebuildAllData() {
-            console.log("rebuild started")
             this.getChampionship()
             this.getStanding()
             this.getFixture()
-            console.log("rebuild finished")
         }
 
-        resetLeague(e) {
+        async resetLeague(e) {
             fetch('/api/fixture/reset')
                 .catch(error => {
                     console.error(error);
                 });
 
+            await new Promise(r => setTimeout(r, 200));
+
             this.rebuildAllData()
         }
 
-        playWeek(e) {
+        async playWeek(e) {
             fetch('/api/fixture/play/' + this.state.activeWeek)
                 .catch(error => {
                     console.error(error);
                 });
 
+            await new Promise(r => setTimeout(r, 200));
+
             this.rebuildAllData()
         }
 
-        playAll(e) {
+        async playAll(e) {
             fetch('/api/fixture/play/all')
                 .catch(error => {
                     console.error(error);
                 });
+
+            await new Promise(r => setTimeout(r, 200));
 
             this.rebuildAllData()
         }
