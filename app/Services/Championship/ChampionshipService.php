@@ -35,13 +35,7 @@ class ChampionshipService
         $leftWeek = $weekCount - $week;
         $firstTeam  = $standings->first();
 
-        if ($leftWeek < 1)
-        {
-            Championship::where('team_id', '!=',$firstTeam->team_id)->update(['prediction' => 0]);
-            Championship::where('team_id', '=',$firstTeam->team_id)->update(['prediction' => 100]);
-
-            return;
-        } elseif ($leftWeek > 2)
+        if ($leftWeek > 2)
         {
             return;
         }

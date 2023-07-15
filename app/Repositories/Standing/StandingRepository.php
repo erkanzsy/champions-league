@@ -23,7 +23,7 @@ class StandingRepository implements StandingInterface
     {
         return Standing::where(function ($query) use ($start, $end) {
             $query->where('points', '>=', $start)
-                ->where('points', '<=', $end);
+                ->where('points', '<', $end);
         })->pluck('id')->toArray();
     }
 
