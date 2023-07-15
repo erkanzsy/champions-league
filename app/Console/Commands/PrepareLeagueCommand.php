@@ -220,7 +220,7 @@ class PrepareLeagueCommand extends Command
                     'league_id' => $league->id,
                     'team_id' => $team->id,
                     'term' => 2024,
-                    'prediction' => $team->strength,
+                    'prediction' => 0,
                 ]);
             }
         }

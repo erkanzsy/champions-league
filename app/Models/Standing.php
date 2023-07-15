@@ -22,4 +22,9 @@ class Standing extends Model
         'goal_difference',
         'points',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id', 'id');
+    }
 }
