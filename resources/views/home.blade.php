@@ -129,35 +129,35 @@
 
         async resetLeague(e) {
             fetch('/api/fixture/reset')
+                .then(response => response.json())
+                .then(data => {
+                    this.rebuildAllData();
+                })
                 .catch(error => {
                     console.error(error);
                 });
-
-            await new Promise(r => setTimeout(r, 2000));
-
-            this.rebuildAllData()
         }
 
         async playWeek(e) {
             fetch('/api/fixture/play/' + this.state.activeWeek)
+                .then(response => response.json())
+                .then(data => {
+                    this.rebuildAllData();
+                })
                 .catch(error => {
                     console.error(error);
                 });
-
-            await new Promise(r => setTimeout(r, 2000));
-
-            this.rebuildAllData()
         }
 
         async playAll(e) {
             fetch('/api/fixture/play/all')
+                .then(response => response.json())
+                .then(data => {
+                    this.rebuildAllData();
+                })
                 .catch(error => {
                     console.error(error);
                 });
-
-            await new Promise(r => setTimeout(r, 2000));
-
-            this.rebuildAllData()
         }
 
         render() {
