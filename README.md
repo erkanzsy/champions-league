@@ -1,51 +1,24 @@
 # champions-league
 
 
-## API Request ve Response Örneği
+## ER Diagram
+![Screen Shot 2023-07-15 at 00 08 31](https://github.com/erkanzsy/champions-league/assets/22520257/9a4ac960-1850-4e32-ba7a-c34780b2c2dd)
 
-Aşağıda, API kullanarak yapılacak bir istek ve elde edilen bir örnek yanıtın nasıl görünebileceğiyle ilgili bir örnek bulunmaktadır:
+## UI 
+![Screen Shot 2023-07-15 at 22 56 56](https://github.com/erkanzsy/champions-league/assets/22520257/961599e0-efdf-4fa6-bb73-27830cde1bec)
 
-### İstek
+## TECHNOLOGIES
+* Laravel 10
+* Elastic Beanstalk
+* AWS RDS
+* EB CLI
+* Standalone React.js
+* MySQL
 
-```http
-GET /fixture HTTP/1.1
-Host: 127.0.0.1:8000
-Accept: application/json
+## Deployed
+[AWS](http://champions-league-env.eba-axa6hnsk.us-east-1.elasticbeanstalk.com/)
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "status": "success",
-  "data": {
-    "league": {
-    ""Premier League"
-    },
-    "": "John Doe",
-    "email": "john@example.com"
-  }
-}
-```
-
-
-
-### Reset
-
-```http
-GET /reset HTTP/1.1
-Host: 127.0.0.1:8000
-Accept: application/json
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "status": "success",
-  "data": {
-    "league": {
-    ""Premier League"
-    },
-    "": "John Doe",
-    "email": "john@example.com"
-  }
-}
-```
-
+## Unittests
+<a href="https://github.com/erkanzsy/champions-league/actions">
+<img src="https://img.shields.io/github/actions/workflow/status/erkanzsy/champions-league/laravel-tests.yml?branch=main&label=%F0%9F%A7%AA%20&style=flat&color=75C46B">
+  </a>
