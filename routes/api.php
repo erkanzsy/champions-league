@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index']);
+
+Route::get('/fixture', [\App\Http\Controllers\FixtureController::class, 'index']);
+Route::get('/fixture/play/{week}', [\App\Http\Controllers\FixtureController::class, 'playWeek']);
+
+Route::get('/standing', [\App\Http\Controllers\StandingController::class, 'index']);
+
+Route::get('/league', [\App\Http\Controllers\LeagueController::class, 'index']);
