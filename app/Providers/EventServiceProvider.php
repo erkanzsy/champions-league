@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\MatchPlayed;
+use App\Listeners\UpdateChampionship;
 use App\Listeners\UpdatePrediction;
 use App\Listeners\UpdateStanding;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +19,7 @@ class EventServiceProvider extends ServiceProvider
         MatchPlayed::class => [
             UpdateStanding::class,
             UpdatePrediction::class,
+            UpdateChampionship::class,
         ],
     ];
 

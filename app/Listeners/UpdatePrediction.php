@@ -5,13 +5,13 @@ namespace App\Listeners;
 use App\Events\MatchPlayed;
 use App\Models\Team;
 use App\Repositories\Fixture\FixtureRepository;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use function PHPUnit\Framework\matches;
 
 class UpdatePrediction
 {
     const WEEK_COUNT = 5;
+
+    const WEIGHT_STANDING = 80;
+    const WEIGHT_LAST_WON_MATCHES = 20;
 
     /**
      * Create the event listener.
@@ -48,6 +48,6 @@ class UpdatePrediction
     {
         $matches = $this->fixtureRepository->getWonMatchByTeamAndWeek($team->id, $week - self::WEEK_COUNT, $week);
 
-        return (($matches->count() / self::WEEK_COUNT * 100 * 20) + ($team->strength * 80)) / 100;
+        return (($matches->count() / self::WEEK_COUNT * 100 * self::WEIGHT_LAST_WON_MATCHES) + ($team->strength * self::WEIGHT_STANDING)) / 100;
     }
 }

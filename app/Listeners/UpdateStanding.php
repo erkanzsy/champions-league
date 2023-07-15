@@ -7,6 +7,12 @@ use App\Repositories\Standing\StandingRepository;
 
 class UpdateStanding
 {
+    const POINT_WINS = 3;
+
+    const POINT_DRAWS = 1;
+
+    const POINT_LOSSES = 0;
+
     /**
      * Create the event listener.
      */

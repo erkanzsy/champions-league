@@ -172,7 +172,7 @@
                                     className="btn btn-primary"
                                     onClick={this.playWeek}
                                     disabled={this.state.activeWeek === 0}
-                                >Play Week
+                                >Play Next Week
                                 </button>
 
                                 <button
@@ -180,14 +180,14 @@
                                     className="btn btn-secondary"
                                     disabled={this.state.activeWeek === 0}
                                     onClick={this.playAll}
-                                >Play All
+                                >Play All Weeks
                                 </button>
 
                                 <button
                                     type="button"
                                     className="btn btn-danger"
                                     onClick={this.resetLeague}
-                                >Reset League
+                                >Reset Data
                                 </button>
 
                                 {
