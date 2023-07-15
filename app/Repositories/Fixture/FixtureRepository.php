@@ -13,6 +13,13 @@ class FixtureRepository implements FixtureInterface
         return Fixture::where(['week' => $week])->get();
     }
 
+    public function getUnPlayedFixturesOrderByWeek(): Collection
+    {
+        return Fixture::whereNull('home_score')
+            ->orderBy('week')
+            ->get();
+    }
+
     public function getWonMatchByTeamAndWeek(int $teamId, int $start, int $end): Collection
     {
         return Fixture::where(['winner' => $teamId])

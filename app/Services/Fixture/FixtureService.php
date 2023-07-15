@@ -6,6 +6,7 @@ use App\Events\MatchPlayed;
 use App\Models\Fixture;
 use App\Models\Team;
 use App\Repositories\Fixture\FixtureRepository;
+use Symfony\Component\VarDumper\VarDumper;
 
 class FixtureService
 {
@@ -32,25 +33,43 @@ class FixtureService
         }
     }
 
-    private function playMatch(Fixture $fixture)
+    public function playAll()
     {
-        $homeScore = $this->calculateScore($fixture->home_rate);
-        $awayScore = $this->calculateScore($fixture->away_rate);
+        $matches = $this->fixtureInterface->getUnPlayedFixturesOrderByWeek();
 
-        $fixture->home_score = $homeScore;
-        $fixture->away_score = $awayScore;
+        if ($matches->isEmpty())
+        {
+            throw new \Exception("Week is not eligible!");
+        }
 
-        MatchPlayed::dispatch($fixture);
+        /** @var Fixture $match */
+        foreach ($matches as $match)
+        {
+            $this->playMatch($match);
+        }
+    }
+
+    private function playMatch(Fixture $match)
+    {
+        $match->refresh();
+
+        $homeScore = $this->calculateScore($match->home_rate);
+        $awayScore = $this->calculateScore($match->away_rate);
+
+        $match->home_score = $homeScore;
+        $match->away_score = $awayScore;
+
+        MatchPlayed::dispatch($match);
 
         if ($homeScore > $awayScore)
         {
-            $fixture->winner = $fixture->home->id;
+            $match->winner = $match->home->id;
         } elseif ($awayScore > $homeScore)
         {
-            $fixture->winner = $fixture->away->id;
+            $match->winner = $match->away->id;
         }
 
-        $fixture->save();
+        $match->save();
     }
 
     private function calculateScore(float $rate)

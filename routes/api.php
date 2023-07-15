@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index']);
+Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
 
 Route::get('/fixture', [\App\Http\Controllers\FixtureController::class, 'index']);
+Route::get('/fixture/reset', [\App\Http\Controllers\FixtureController::class, 'reset']);
+Route::get('/fixture/play/all', [\App\Http\Controllers\FixtureController::class, 'playAll']);
 Route::get('/fixture/play/{week}', [\App\Http\Controllers\FixtureController::class, 'playWeek']);
 
 Route::get('/standing', [\App\Http\Controllers\StandingController::class, 'index']);
