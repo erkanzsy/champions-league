@@ -231,83 +231,84 @@
                                 <br/>
                                 <br/>
 
-                                {
-                                    this.state.championship.length !== 0 ? (
-                                        <div className="container">
-                                            <h2>Championship</h2>
-                                                <table className="table">
-                                                    <thead className="thead-dark">
-                                                    <tr>
-                                                        <th>Team</th>
-                                                        <th>Rate</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {
+                                <div className="container">
+                                    <h2>Fixture</h2>
+                                    <div className="row">
+                                    {
+                                        this.state.championship.length !== 0 ? (
+                                            <div className="col-md-6">
+                                                <h2>Championship</h2>
+                                                    <table className="table">
+                                                        <thead className="thead-dark">
+                                                        <tr>
+                                                            <th>Team</th>
+                                                            <th>Rate</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {
 
-                                                        this.state.championship.map((team, i) =>
-                                                            <tr key={i}>
-                                                                <td>{ this.state.teams[team.team_id] }</td>
-                                                                <td>{ team.prediction }</td>
-                                                            </tr>
+                                                            this.state.championship.map((team, i) =>
+                                                                <tr key={i}>
+                                                                    <td>{ this.state.teams[team.team_id] }</td>
+                                                                    <td>{ team.prediction }</td>
+                                                                </tr>
 
-                                                        )
-                                                    }
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <h3>No results to show for championship</h3>
-                                        </div>
-                                    )
-                                }
+                                                            )
+                                                        }
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <h3>No results to show for championship</h3>
+                                            </div>
+                                        )
+                                    }
 
-                                <br/>
-                                <br/>
+                                    {
+                                        this.state.standings.length !== 0 ? (
+                                            <div className="col-md-6">
+                                                <h2>Standing</h2>
+                                                    <table className="table">
+                                                        <thead className="thead-dark">
+                                                        <tr>
+                                                            <th>Team</th>
+                                                            <th>Played</th>
+                                                            <th>P</th>
+                                                            <th>W</th>
+                                                            <th>D</th>
+                                                            <th>L</th>
+                                                            <th>GD</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {
 
-                                {
-                                    this.state.standings.length !== 0 ? (
-                                        <div className="container">
-                                            <h2>Standing</h2>
-                                                <table className="table">
-                                                    <thead className="thead-dark">
-                                                    <tr>
-                                                        <th>Team</th>
-                                                        <th>Played</th>
-                                                        <th>P</th>
-                                                        <th>W</th>
-                                                        <th>D</th>
-                                                        <th>L</th>
-                                                        <th>GD</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {
+                                                            this.state.standings.map((team, i) =>
+                                                                <tr key={i}>
+                                                                    <td>{ this.state.teams[team.team_id] }</td>
+                                                                    <td>{ team.played }</td>
+                                                                    <td>{ team.points }</td>
+                                                                    <td>{ team.wins }</td>
+                                                                    <td>{ team.draws }</td>
+                                                                    <td>{ team.losses }</td>
+                                                                    <td>{ team.goal_difference }</td>
+                                                                </tr>
 
-                                                        this.state.standings.map((team, i) =>
-                                                            <tr key={i}>
-                                                                <td>{ this.state.teams[team.team_id] }</td>
-                                                                <td>{ team.played }</td>
-                                                                <td>{ team.points }</td>
-                                                                <td>{ team.wins }</td>
-                                                                <td>{ team.draws }</td>
-                                                                <td>{ team.losses }</td>
-                                                                <td>{ team.goal_difference }</td>
-                                                            </tr>
-
-                                                        )
-                                                    }
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <h3>No results to show for standings</h3>
-                                        </div>
-                                    )
-                                }
-
+                                                            )
+                                                        }
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <h3>No results to show for standings</h3>
+                                            </div>
+                                        )
+                                    }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
