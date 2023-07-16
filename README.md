@@ -2,17 +2,17 @@
 
 
 ## ER Diagram
-![Screen Shot 2023-07-15 at 00 08 31](https://github.com/erkanzsy/champions-league/assets/22520257/9ae71d67-ffd5-4adf-9652-b58a902d57fa)
+![champions-league drawio](https://github.com/erkanzsy/champions-league/assets/22520257/c3f7d500-1660-4ef7-8e97-887892775ee5)
 
 ## Ui 
 ![Screen Shot 2023-07-15 at 22 56 56](https://github.com/erkanzsy/champions-league/assets/22520257/ced04b45-e8d0-45ad-abd5-96703ca37838)
 
 ## Technologies
+* PHP 8.1
 * Laravel 10
-* Elastic Beanstalk
-* AWS RDS
-* EB CLI
-* Standalone React.js
+* Elastic Beanstalk, EB CLI
+* AWS RDS 
+* React.js
 * MySQL
 
 ## Algorithm
