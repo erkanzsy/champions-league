@@ -46,7 +46,7 @@ class LeagueService
         $this->predictFirstWeek($matches, $teams);
     }
 
-    private function createPeriod(array $teams, array $firstPeriod = [])
+    public function createPeriod(array $teams, array $firstPeriod = [])
     {
         $matches = [];
         foreach ($teams as $home) {
