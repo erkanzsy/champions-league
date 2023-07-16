@@ -14,6 +14,22 @@
 * AWS RDS 
 * React.js
 * MySQL
+* Docker
+
+## Installation
+`git clone git@github.com:erkanzsy/champions-league.git`
+
+`cd champions-league`
+
+`make setup`
+
+`make prepare`
+
+----
+- Check commands :  `make help`
+- Check app : http://localhost:9969/
+- Check phpMyAdmin : http://localhost:7999/
+
 
 ## Algorithm
 * %50 Random

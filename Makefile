@@ -18,15 +18,16 @@ HELP_FUN = \
 
 setup:		## Prepare and run docker environment
 	docker network create ${NETWORK_NAME} || true
-	## cp -n .env.docker .env || true
+	cp -n .env.exapmle .env || true
 	docker-compose up -d
 
 prepare: 	## Composer install
 	docker exec -it ${CONTAINER_NAME} composer install || true
-	#bin/console doctrine:database:create || true
+	 php artisan migrate --force
+	 php artisan app:prepare-league-command
 
 cc:  		## Cache clear
-	docker exec -it ${CONTAINER_NAME} bin/console cache:clear
+	docker exec -it ${CONTAINER_NAME} php artisan cache:clear
 
 clear-log:  ## Clear log directory
 	docker exec -it ${CONTAINER_NAME} rm -rf var/log/*
